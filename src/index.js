@@ -16,6 +16,14 @@ app.post('/increment', (req, res) => {
   fs.writeFileSync('data.json', JSON.stringify(data));
   res.json(data);
 });
+
+app.post('/decrement', (req, res) => {
+  let data = JSON.parse(fs.readFileSync('data.json'));
+  data.counter--;
+  fs.writeFileSync('data.json', JSON.stringify(data));
+  res.json(data);
+});
+
 app.post('/reset', (req, res) => {
   let data = JSON.parse(fs.readFileSync('data.json'));
   data.counter = 0;
